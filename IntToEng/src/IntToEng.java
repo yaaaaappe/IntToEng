@@ -15,7 +15,14 @@ public class IntToEng {
    String eng="";
    String eng10 = "";
    String eng100 ="";
+   String eng1000 ="";
    int m = n;
+   if(n>=1000){
+	   int l = n/1000;
+	   eng1000 = countnumber(l);
+	   eng1000= eng1000+ " thousand";
+	   n = n%100;
+   }
    if(n>=100){
 	   int l = n/100;
 	   eng100 = countnumber(l);
@@ -47,7 +54,7 @@ public class IntToEng {
      eng = countnumber(n);
    }
     	
-    	String str = Integer.toString(m)+" "+eng100+" "+eng10+" "+eng;
+    	String str = Integer.toString(m)+" "+eng1000+" "+eng100+" "+eng10+" "+eng;
         return str;
     }
 
