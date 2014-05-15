@@ -16,12 +16,28 @@ public class IntToEng {
    String eng10 = "";
    String eng100 ="";
    String eng1000 ="";
+   String eng10000 = "";
+   String eng100000 ="";
+   String a ="";
    int m = n;
+   if(999999<n) { a = "error"; return a;}
+   if(n>=100000){
+	   int l = n/100000;
+	   eng100000 = countnumber(l);
+	   eng100000= eng100000+ " billion";
+	   n = n%100000;
+   }
+   if(n>=10000){
+	   int l = n/10000;
+	   eng10000 = countnumber(l);
+	   eng10000= eng10000+ " million";
+	   n = n%10000;
+   }
    if(n>=1000){
 	   int l = n/1000;
 	   eng1000 = countnumber(l);
 	   eng1000= eng1000+ " thousand";
-	   n = n%100;
+	   n = n%1000;
    }
    if(n>=100){
 	   int l = n/100;
@@ -54,7 +70,7 @@ public class IntToEng {
      eng = countnumber(n);
    }
     	
-    	String str = Integer.toString(m)+" "+eng1000+" "+eng100+" "+eng10+" "+eng;
+    	String str = Integer.toString(m)+" "+eng100000+" "+eng10000+" "+eng1000+" "+eng100+" "+eng10+" "+eng;
         return str;
     }
 
