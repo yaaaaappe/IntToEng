@@ -14,7 +14,36 @@ public class IntToEng {
     static String translateEng(int n) {
    String eng="";
    String eng10 = "";
+   String eng100 ="";
+   String eng1000 ="";
+   String eng10000 = "";
+   String eng100000=" ";
    int m = n;
+   if(n>=100000){
+	   int l = n/100000;
+	   eng100000 = countnumber(l);
+	   eng100000= eng100000+ " billion";
+	   n = n%100000;
+   }
+   if(n>=10000){
+	   int l = n/10000;
+	   eng10000 = countnumber(l);
+	   eng10000= eng10000+ " million";
+	   n = n%10000;
+   }
+   if(n>=1000){
+	   int l = n/1000;
+	   eng1000 = countnumber(l);
+	   eng1000= eng1000+ " thousand";
+	   n = n%1000;
+   }
+   if(n>=100){
+	   int l = n/100;
+	   eng100 = countnumber(l);
+	   eng100= eng100+ " hundred";
+	   n = n%100;
+   }
+  
    if(n==0) eng="zero";
    else if(n==10) eng="ten";
 	else if(n==11) eng="eleven";
@@ -27,7 +56,7 @@ public class IntToEng {
 	else if(n==18) eng="egihteen";
 	else if(n==19) eng="ninteen";
    if(n<10 || 20<=n) {
-	   if(n>=90) eng10 = "ninty";
+	   if(100>n && n>=90) eng10 = "ninety";
    else    if(n>=80) eng10 = "eighty";
    else    if(n>=70) eng10 = "seventy"; 
    else    if(n>=60) eng10 = "sixty"; 
@@ -36,18 +65,24 @@ public class IntToEng {
    else    if(n>=30) eng10 = "thrity";
    else    if(n>=20) eng10 = "twenty";
   n=n%10;
-     if(n==1) eng="one";	
-    	else if(n==2) eng="two";
-    	else if(n==3) eng="three";
-    	else if(n==4) eng="four";
-    	else if(n==5) eng="five";
-    	else if(n==6) eng="six";
-    	else if(n==7) eng="seven";
-    	else if(n==8) eng="eight";
-    	else if(n==9) eng="nine";
+     eng = countnumber(n);
    }
     	
-    	String str = Integer.toString(m)+" "+eng10+eng;
+    	String str = Integer.toString(m)+" "+eng100000+" "+eng10000+""+eng1000+" "+eng100+" "+eng10+" "+eng;
         return str;
     }
+
+	public static String countnumber(int n) {
+		String eng="";
+		if(n==1) eng="one";	
+			else if(n==2) eng="two";
+			else if(n==3) eng="three";
+			else if(n==4) eng="four";
+			else if(n==5) eng="five";
+			else if(n==6) eng="six";
+			else if(n==7) eng="seven";
+			else if(n==8) eng="eight";
+			else if(n==9) eng="nine";
+		return eng;
+	}
 }
